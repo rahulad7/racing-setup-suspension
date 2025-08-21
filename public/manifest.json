@@ -1,0 +1,71 @@
+{
+  "name": "Setup Pro - Find Those Tenths",
+  "short_name": "Setup Pro",
+  "description": "Professional race car suspension setup and diagnostic tool for optimal track performance. Find those tenths with data-driven insights.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["automotive", "sports", "utilities"],
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Setup Pro - Track Analysis Dashboard"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "New Analysis",
+      "short_name": "Analyze",
+      "description": "Start a new suspension analysis",
+      "url": "/?tab=setup",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Vehicle Manager",
+      "short_name": "Vehicles",
+      "description": "Manage your vehicles",
+      "url": "/?tab=vehicles",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}

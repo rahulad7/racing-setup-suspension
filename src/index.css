@@ -1,0 +1,828 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(45deg, rgba(0,0,0,0.08) 25%, transparent 25%), 
+      linear-gradient(-45deg, rgba(0,0,0,0.08) 25%, transparent 25%), 
+      linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.08) 75%), 
+      linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.08) 75%);
+    background-size: 30px 30px;
+    background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.7;
+  }
+  
+  .dark body::before {
+    background-image: 
+      linear-gradient(45deg, rgba(255,255,255,0.06) 25%, transparent 25%), 
+      linear-gradient(-45deg, rgba(255,255,255,0.06) 25%, transparent 25%), 
+      linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.06) 75%), 
+      linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.06) 75%);
+    opacity: 0.6;
+  }
+}
+
+/* Custom racing-themed styles */
+.racing-gradient {
+  background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+}
+
+.racing-text-gradient {
+  background: linear-gradient(135deg, #f87171 0%, #fb923c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.racing-border {
+  border-image: linear-gradient(135deg, #dc2626, #ea580c) 1;
+}
+
+/* Checkered flag pattern utility classes */
+.checkered-bg {
+  background-image: 
+    linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%), 
+    linear-gradient(-45deg, rgba(0,0,0,0.1) 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.1) 75%), 
+    linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.1) 75%);
+  background-size: 25px 25px;
+  background-position: 0 0, 0 12.5px, 12.5px -12.5px, -12.5px 0px;
+}
+
+.checkered-subtle {
+  background-image: 
+    linear-gradient(45deg, rgba(0,0,0,0.06) 25%, transparent 25%), 
+    linear-gradient(-45deg, rgba(0,0,0,0.06) 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.06) 75%), 
+    linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.06) 75%);
+  background-size: 35px 35px;
+  background-position: 0 0, 0 17.5px, 17.5px -17.5px, -17.5px 0px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #dc2626, #ea580c);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #b91c1c, #c2410c);
+}
+
+/* Glow effects */
+.glow-red {
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+}
+
+.glow-orange {
+  box-shadow: 0 0 20px rgba(234, 88, 12, 0.3);
+}
+
+/* Animation for racing theme */
+@keyframes racing-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.racing-pulse {
+  animation: racing-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Enhanced form styling */
+.racing-input {
+  @apply bg-gray-700/50 border-red-500/30 text-white placeholder-gray-400;
+  transition: all 0.2s ease;
+}
+
+.racing-input:focus {
+  @apply border-red-500/60 ring-2 ring-red-500/20;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.1);
+}
+
+/* Card hover effects */
+.racing-card {
+  transition: all 0.3s ease;
+}
+
+.racing-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(220, 38, 38, 0.15);
+}
+
+/* Responsive utilities */
+@layer utilities {
+  /* Mobile-first responsive text */
+  .text-mobile-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+  
+  .text-mobile-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  
+  .text-mobile-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  .text-mobile-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  .text-mobile-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  
+  .text-mobile-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  .text-mobile-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  .text-mobile-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  
+  .text-mobile-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+  
+  .text-mobile-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+  
+  .text-mobile-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+  
+  /* Responsive spacing */
+  .space-mobile-xs {
+    margin-bottom: 0.5rem;
+  }
+  
+  .space-mobile-sm {
+    margin-bottom: 1rem;
+  }
+  
+  .space-mobile-md {
+    margin-bottom: 1.5rem;
+  }
+  
+  .space-mobile-lg {
+    margin-bottom: 2rem;
+  }
+  
+  .space-mobile-xl {
+    margin-bottom: 3rem;
+  }
+  
+  /* Responsive padding */
+  .p-mobile-xs {
+    padding: 0.5rem;
+  }
+  
+  .p-mobile-sm {
+    padding: 1rem;
+  }
+  
+  .p-mobile-md {
+    padding: 1.5rem;
+  }
+  
+  .p-mobile-lg {
+    padding: 2rem;
+  }
+  
+  .p-mobile-xl {
+    padding: 3rem;
+  }
+  
+  /* Responsive margins */
+  .m-mobile-xs {
+    margin: 0.5rem;
+  }
+  
+  .m-mobile-sm {
+    margin: 1rem;
+  }
+  
+  .m-mobile-md {
+    margin: 1.5rem;
+  }
+  
+  .m-mobile-lg {
+    margin: 2rem;
+  }
+  
+  .m-mobile-xl {
+    margin: 3rem;
+  }
+  
+  /* Responsive grid */
+  .grid-mobile-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+  .grid-mobile-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .grid-mobile-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .grid-mobile-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  
+  /* Responsive flex */
+  .flex-mobile-col {
+    flex-direction: column;
+  }
+  
+  .flex-mobile-row {
+    flex-direction: row;
+  }
+  
+  .flex-mobile-wrap {
+    flex-wrap: wrap;
+  }
+  
+  .flex-mobile-nowrap {
+    flex-wrap: nowrap;
+  }
+  
+  /* Responsive display */
+  .hidden-mobile {
+    display: none;
+  }
+  
+  .block-mobile {
+    display: block;
+  }
+  
+  .flex-mobile {
+    display: flex;
+  }
+  
+  .grid-mobile {
+    display: grid;
+  }
+  
+  .inline-mobile {
+    display: inline;
+  }
+  
+  .inline-block-mobile {
+    display: inline-block;
+  }
+  
+  .inline-flex-mobile {
+    display: inline-flex;
+  }
+  
+  /* Responsive positioning */
+  .relative-mobile {
+    position: relative;
+  }
+  
+  .absolute-mobile {
+    position: absolute;
+  }
+  
+  .fixed-mobile {
+    position: fixed;
+  }
+  
+  .sticky-mobile {
+    position: sticky;
+  }
+  
+  /* Responsive sizing */
+  .w-mobile-full {
+    width: 100%;
+  }
+  
+  .w-mobile-auto {
+    width: auto;
+  }
+  
+  .w-mobile-screen {
+    width: 100vw;
+  }
+  
+  .h-mobile-full {
+    height: 100%;
+  }
+  
+  .h-mobile-auto {
+    height: auto;
+  }
+  
+  .h-mobile-screen {
+    height: 100vh;
+  }
+  
+  /* Responsive overflow */
+  .overflow-mobile-auto {
+    overflow: auto;
+  }
+  
+  .overflow-mobile-hidden {
+    overflow: hidden;
+  }
+  
+  .overflow-mobile-scroll {
+    overflow: scroll;
+  }
+  
+  .overflow-mobile-visible {
+    overflow: visible;
+  }
+  
+  /* Responsive z-index */
+  .z-mobile-auto {
+    z-index: auto;
+  }
+  
+  .z-mobile-0 {
+    z-index: 0;
+  }
+  
+  .z-mobile-10 {
+    z-index: 10;
+  }
+  
+  .z-mobile-20 {
+    z-index: 20;
+  }
+  
+  .z-mobile-30 {
+    z-index: 30;
+  }
+  
+  .z-mobile-40 {
+    z-index: 40;
+  }
+  
+  .z-mobile-50 {
+    z-index: 50;
+  }
+  
+  .z-mobile-max {
+    z-index: 9999;
+  }
+}
+
+/* Media queries for larger screens */
+@media (min-width: 640px) {
+  .text-mobile-xs {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  
+  .text-mobile-sm {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  .text-mobile-base {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  .text-mobile-lg {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  
+  .text-mobile-xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  .text-mobile-2xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  .text-mobile-3xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  
+  .text-mobile-4xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+  
+  .text-mobile-5xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+  
+  .text-mobile-6xl {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+  
+  .text-mobile-7xl {
+    font-size: 6rem;
+    line-height: 1;
+  }
+  
+  .space-mobile-xs {
+    margin-bottom: 1rem;
+  }
+  
+  .space-mobile-sm {
+    margin-bottom: 1.5rem;
+  }
+  
+  .space-mobile-md {
+    margin-bottom: 2rem;
+  }
+  
+  .space-mobile-lg {
+    margin-bottom: 3rem;
+  }
+  
+  .space-mobile-xl {
+    margin-bottom: 4rem;
+  }
+  
+  .p-mobile-xs {
+    padding: 1rem;
+  }
+  
+  .p-mobile-sm {
+    padding: 1.5rem;
+  }
+  
+  .p-mobile-md {
+    padding: 2rem;
+  }
+  
+  .p-mobile-lg {
+    padding: 3rem;
+  }
+  
+  .p-mobile-xl {
+    padding: 4rem;
+  }
+  
+  .m-mobile-xs {
+    margin: 1rem;
+  }
+  
+  .m-mobile-sm {
+    margin: 1.5rem;
+  }
+  
+  .m-mobile-md {
+    margin: 2rem;
+  }
+  
+  .m-mobile-lg {
+    margin: 3rem;
+  }
+  
+  .m-mobile-xl {
+    margin: 4rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .text-mobile-xs {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  .text-mobile-sm {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  .text-mobile-base {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  
+  .text-mobile-lg {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  .text-mobile-xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  .text-mobile-2xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  
+  .text-mobile-3xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+  
+  .text-mobile-4xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+  
+  .text-mobile-5xl {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+  
+  .text-mobile-6xl {
+    font-size: 6rem;
+    line-height: 1;
+  }
+  
+  .text-mobile-7xl {
+    font-size: 8rem;
+    line-height: 1;
+  }
+  
+  .space-mobile-xs {
+    margin-bottom: 1.5rem;
+  }
+  
+  .space-mobile-sm {
+    margin-bottom: 2rem;
+  }
+  
+  .space-mobile-md {
+    margin-bottom: 3rem;
+  }
+  
+  .space-mobile-lg {
+    margin-bottom: 4rem;
+  }
+  
+  .space-mobile-xl {
+    margin-bottom: 5rem;
+  }
+  
+  .p-mobile-xs {
+    padding: 1.5rem;
+  }
+  
+  .p-mobile-sm {
+    padding: 2rem;
+  }
+  
+  .p-mobile-md {
+    padding: 3rem;
+  }
+  
+  .p-mobile-lg {
+    padding: 4rem;
+  }
+  
+  .p-mobile-xl {
+    padding: 5rem;
+  }
+  
+  .m-mobile-xs {
+    margin: 1.5rem;
+  }
+  
+  .m-mobile-sm {
+    margin: 2rem;
+  }
+  
+  .m-mobile-md {
+    margin: 3rem;
+  }
+  
+  .m-mobile-lg {
+    margin: 4rem;
+  }
+  
+  .m-mobile-xl {
+    margin: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-mobile-xs {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  .text-mobile-sm {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  
+  .text-mobile-base {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  .text-mobile-lg {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  .text-mobile-xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  
+  .text-mobile-2xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+  
+  .text-mobile-3xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+  
+  .text-mobile-4xl {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+  
+  .text-mobile-5xl {
+    font-size: 6rem;
+    line-height: 1;
+  }
+  
+  .text-mobile-6xl {
+    font-size: 8rem;
+    line-height: 1;
+  }
+  
+  .text-mobile-7xl {
+    font-size: 10rem;
+    line-height: 1;
+  }
+  
+  .space-mobile-xs {
+    margin-bottom: 2rem;
+  }
+  
+  .space-mobile-sm {
+    margin-bottom: 3rem;
+  }
+  
+  .space-mobile-md {
+    margin-bottom: 4rem;
+  }
+  
+  .space-mobile-lg {
+    margin-bottom: 5rem;
+  }
+  
+  .space-mobile-xl {
+    margin-bottom: 6rem;
+  }
+  
+  .p-mobile-xs {
+    padding: 2rem;
+  }
+  
+  .p-mobile-sm {
+    padding: 3rem;
+  }
+  
+  .p-mobile-md {
+    padding: 4rem;
+  }
+  
+  .p-mobile-lg {
+    padding: 5rem;
+  }
+  
+  .p-mobile-xl {
+    padding: 6rem;
+  }
+  
+  .m-mobile-xs {
+    margin: 2rem;
+  }
+  
+  .m-mobile-sm {
+    margin: 3rem;
+  }
+  
+  .m-mobile-md {
+    margin: 4rem;
+  }
+  
+  .m-mobile-lg {
+    margin: 5rem;
+  }
+  
+  .m-mobile-xl {
+    margin: 6rem;
+  }
+}
