@@ -76,11 +76,11 @@ const ModernAppLayout: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 w-full">
-      {/* Animated background elements */}
+    <div className="min-h-screen bg-black w-full">
+      {/* Subtle background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -right-20 w-40 h-40 md:-top-40 md:-right-40 md:w-80 md:h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-20 -left-20 w-40 h-40 md:-bottom-40 md:-left-40 md:w-80 md:h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}} />
+        <div className="absolute top-20 right-20 w-64 h-64 bg-yellow-400/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-64 h-64 bg-green-400/5 rounded-full blur-3xl" />
       </div>
 
       <AppHeader onShowLicenseModal={() => setShowLicenseModal(true)} />
@@ -89,24 +89,24 @@ const ModernAppLayout: React.FC = () => {
         {/* Hero Section */}
         <div className="text-center mb-8 md:mb-12 w-full">
           <div className="flex items-center justify-center gap-2 md:gap-3 mb-4">
-            <div className="p-2 md:p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl">
-              <Zap className="h-6 w-6 md:h-8 md:w-8 text-white" />
+            <div className="p-2 md:p-3 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl">
+              <Zap className="h-6 w-6 md:h-8 md:w-8 text-black" />
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
               Race Setup Pro
             </h1>
           </div>
-          <p className="text-lg md:text-xl text-slate-400 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
+          <p className="text-lg md:text-xl text-gray-400 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
             Professional suspension analysis and setup recommendations powered by advanced algorithms
           </p>
         </div>
 
         <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
           <div className="flex justify-center mb-6 md:mb-8 w-full">
-            <TabsList className="grid grid-cols-5 bg-slate-800/50 border border-slate-700/50 backdrop-blur-sm p-1 rounded-xl w-full max-w-4xl overflow-x-auto">
+            <TabsList className="grid grid-cols-5 bg-black/80 border border-gray-800 backdrop-blur-sm p-1 rounded-xl w-full max-w-4xl overflow-x-auto">
               <TabsTrigger 
                 value="vehicles" 
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-blue-700 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 rounded-lg text-xs md:text-sm whitespace-nowrap"
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-yellow-500 data-[state=active]:text-black data-[state=active]:shadow-modern transition-all duration-200 rounded-lg text-xs md:text-sm whitespace-nowrap"
               >
                 <Car className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
                 <span className="hidden sm:inline">Vehicles</span>
@@ -114,7 +114,7 @@ const ModernAppLayout: React.FC = () => {
               </TabsTrigger>
               <TabsTrigger 
                 value="track" 
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-blue-700 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 rounded-lg text-xs md:text-sm whitespace-nowrap"
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-yellow-500 data-[state=active]:text-black data-[state=active]:shadow-modern transition-all duration-200 rounded-lg text-xs md:text-sm whitespace-nowrap"
               >
                 <MapPin className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
                 <span className="hidden sm:inline">Weather</span>
@@ -122,7 +122,7 @@ const ModernAppLayout: React.FC = () => {
               </TabsTrigger>
               <TabsTrigger 
                 value="setup" 
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-blue-700 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 rounded-lg text-xs md:text-sm whitespace-nowrap"
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-yellow-500 data-[state=active]:text-black data-[state=active]:shadow-modern transition-all duration-200 rounded-lg text-xs md:text-sm whitespace-nowrap"
               >
                 <Settings className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
                 <span className="hidden sm:inline">Setup</span>
@@ -130,7 +130,7 @@ const ModernAppLayout: React.FC = () => {
               </TabsTrigger>
               <TabsTrigger 
                 value="troubleshooting" 
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-blue-700 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 rounded-lg text-xs md:text-sm whitespace-nowrap"
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-yellow-500 data-[state=active]:text-black data-[state=active]:shadow-modern transition-all duration-200 rounded-lg text-xs md:text-sm whitespace-nowrap"
               >
                 <Wrench className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
                 <span className="hidden sm:inline">Troubleshooting</span>
@@ -138,7 +138,7 @@ const ModernAppLayout: React.FC = () => {
               </TabsTrigger>
               <TabsTrigger 
                 value="history" 
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-blue-700 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 rounded-lg text-xs md:text-sm whitespace-nowrap"
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-yellow-500 data-[state=active]:text-black data-[state=active]:shadow-modern transition-all duration-200 rounded-lg text-xs md:text-sm whitespace-nowrap"
               >
                 <History className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
                 <span className="hidden sm:inline">History</span>
@@ -173,10 +173,10 @@ const ModernAppLayout: React.FC = () => {
                 ) : (
                   <ModernCard className="text-center py-12 md:py-16 w-full" gradient glow>
                     <div className="flex flex-col items-center gap-4">
-                      <div className="p-3 md:p-4 bg-slate-700/50 rounded-full">
-                        <Car className="h-6 w-6 md:h-8 md:w-8 text-slate-400" />
+                      <div className="p-3 md:p-4 bg-gray-800/50 rounded-full">
+                        <Car className="h-6 w-6 md:h-8 md:w-8 text-gray-400" />
                       </div>
-                      <p className="text-slate-400 text-base md:text-lg px-4">Please select a vehicle first to configure its setup.</p>
+                      <p className="text-gray-400 text-base md:text-lg px-4">Please select a vehicle first to configure its setup.</p>
                     </div>
                   </ModernCard>
                 )
@@ -203,10 +203,10 @@ const ModernAppLayout: React.FC = () => {
             ) : (
               <ModernCard className="text-center py-12 md:py-16 w-full" gradient glow>
                 <div className="flex flex-col items-center gap-4">
-                  <div className="p-3 md:p-4 bg-slate-700/50 rounded-full">
-                    <TrendingUp className="h-6 w-6 md:h-8 md:w-8 text-slate-400" />
+                  <div className="p-3 md:p-4 bg-gray-800/50 rounded-full">
+                    <TrendingUp className="h-6 w-6 md:h-8 md:w-8 text-gray-400" />
                   </div>
-                  <p className="text-slate-400 text-base md:text-lg px-4">Complete the setup analysis first to see results.</p>
+                  <p className="text-gray-400 text-base md:text-lg px-4">Complete the setup analysis first to see results.</p>
                 </div>
               </ModernCard>
             )}
@@ -223,10 +223,10 @@ const ModernAppLayout: React.FC = () => {
               ) : (
                 <ModernCard className="text-center py-12 md:py-16 w-full" gradient glow>
                   <div className="flex flex-col items-center gap-4">
-                    <div className="p-3 md:p-4 bg-slate-700/50 rounded-full">
-                      <History className="h-6 w-6 md:h-8 md:w-8 text-slate-400" />
+                    <div className="p-3 md:p-4 bg-gray-800/50 rounded-full">
+                      <History className="h-6 w-6 md:h-8 md:w-8 text-gray-400" />
                     </div>
-                    <p className="text-slate-400 text-base md:text-lg px-4">Please select a vehicle first to view setup history.</p>
+                    <p className="text-gray-400 text-base md:text-lg px-4">Please select a vehicle first to view setup history.</p>
                   </div>
                 </ModernCard>
               )

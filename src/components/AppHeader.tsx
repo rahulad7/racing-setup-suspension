@@ -57,7 +57,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
 
   return (
     <>
-      <header className="bg-gray-900/80 backdrop-blur-sm border-b border-gray-700 sticky top-0 z-50 w-full">
+      <header className="bg-black/90 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50 w-full">
         <div className="w-full px-4 py-4">
           {/* Desktop Header */}
           <div className="hidden md:flex items-center justify-between w-full">
@@ -65,10 +65,10 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
               <Logo />
             </div>
             
-            <div className="flex items-center justify-center space-x-4 flex-1">
+            <div className="flex items-center justify-center space-x-6 flex-1">
               <Button 
                 variant="ghost" 
-                className="text-white hover:text-blue-400"
+                className="text-gray-300 hover:text-yellow-400 transition-colors"
                 onClick={() => navigate('/')}
               >
                 Home
@@ -76,14 +76,14 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
               
               <Button 
                 variant="ghost" 
-                className="text-white hover:text-blue-400"
+                className="text-gray-300 hover:text-yellow-400 transition-colors"
                 onClick={() => navigate('/sample-demo')}
               >
                 Sample
               </Button>
               
               <Button 
-                className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold"
+                className="bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-black font-semibold shadow-lg hover:shadow-modern transition-all duration-200"
                 onClick={handleLaunchAnalysis}
               >
                 Launch Online Analysis Tool
@@ -91,7 +91,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
               
               <Button 
                 variant="outline"
-                className="border-blue-600 bg-white text-blue-700 hover:bg-blue-50 hover:text-blue-800 font-semibold"
+                className="border-gray-600 bg-transparent text-white hover:bg-gray-800/50 hover:border-gray-500 font-medium transition-all duration-200"
                 onClick={handleChoosePlan}
               >
                 Choose Your Plan
@@ -101,7 +101,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
             <div className="flex items-center space-x-4">
               <Button 
                 variant="ghost"
-                className="text-white hover:text-blue-400"
+                className="text-gray-300 hover:text-yellow-400 transition-colors"
                 onClick={() => setShowContactModal(true)}
               >
                 Contact Us
@@ -109,7 +109,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
               
               <Button 
                 variant="outline"
-                className="text-black bg-white border-gray-300 hover:bg-gray-100 hover:text-black font-medium"
+                className="border-gray-600 bg-transparent text-white hover:bg-gray-800/50 hover:border-gray-500 font-medium transition-all duration-200"
                 onClick={handleAuthClick}
               >
                 {user ? 'Sign Out' : 'Sign In'}
@@ -124,7 +124,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
             <div className="flex items-center space-x-2">
               <Button 
                 variant="ghost"
-                className="text-white hover:text-blue-400 p-2"
+                className="text-gray-300 hover:text-yellow-400 transition-colors p-2"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -134,11 +134,11 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 border-t border-gray-700 w-full">
+            <div className="md:hidden mt-4 pb-4 border-t border-gray-800 w-full">
               <div className="flex flex-col space-y-3 pt-4 w-full">
                 <Button 
                   variant="ghost" 
-                  className="text-white hover:text-blue-400 justify-start w-full"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors justify-start w-full"
                   onClick={() => handleNavigation('/')}
                 >
                   Home
@@ -146,14 +146,14 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
                 
                 <Button 
                   variant="ghost" 
-                  className="text-white hover:text-blue-400 justify-start w-full"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors justify-start w-full"
                   onClick={() => handleNavigation('/sample-demo')}
                 >
                   Sample
                 </Button>
                 
                 <Button 
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold justify-start w-full"
+                  className="bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-black font-semibold justify-start w-full"
                   onClick={handleLaunchAnalysis}
                 >
                   Launch Online Analysis Tool
@@ -161,7 +161,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
                 
                 <Button 
                   variant="outline"
-                  className="border-blue-600 bg-white text-blue-700 hover:bg-blue-50 hover:text-black font-semibold justify-start w-full"
+                  className="border-gray-600 bg-transparent text-white hover:bg-gray-800/50 hover:border-gray-500 font-medium justify-start w-full"
                   onClick={handleChoosePlan}
                 >
                   Choose Your Plan
@@ -169,7 +169,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
                 
                 <Button 
                   variant="ghost"
-                  className="text-white hover:text-blue-400 justify-start w-full"
+                  className="text-gray-300 hover:text-yellow-400 transition-colors justify-start w-full"
                   onClick={() => setShowContactModal(true)}
                 >
                   Contact Us
@@ -177,7 +177,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
                 
                 <Button 
                   variant="outline"
-                  className="text-black bg-white border-gray-300 hover:bg-gray-100 hover:text-black font-medium justify-start w-full"
+                  className="border-gray-600 bg-transparent text-white hover:bg-gray-800/50 hover:border-gray-500 font-medium justify-start w-full"
                   onClick={handleAuthClick}
                 >
                   {user ? 'Sign Out' : 'Sign In'}
@@ -194,16 +194,16 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
       </header>
 
       <Dialog open={showContactModal} onOpenChange={setShowContactModal}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md bg-black border-gray-800">
           <DialogHeader>
-            <DialogTitle>Contact Us</DialogTitle>
+            <DialogTitle className="text-white">Contact Us</DialogTitle>
           </DialogHeader>
           <div className="flex flex-col items-center space-y-4 py-4">
-            <p className="text-center text-gray-700">
+            <p className="text-center text-gray-300">
               Feel free to reach out to us at{' '}
               <a 
                 href="mailto:support@racesetuppro.com" 
-                className="text-blue-600 hover:text-blue-800 font-semibold"
+                className="text-yellow-400 hover:text-yellow-300 font-semibold"
               >
                 support@racesetuppro.com
               </a>
@@ -211,7 +211,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
             </p>
             <Button 
               onClick={() => window.open('mailto:support@racesetuppro.com', '_blank')}
-              className="bg-blue-600 hover:bg-blue-700 text-white"
+              className="bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-black font-semibold"
             >
               Send Email
             </Button>

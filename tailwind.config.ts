@@ -81,6 +81,25 @@ export default {
           'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))'
+        },
+        // Custom colors for the modern design
+        modern: {
+          yellow: '#ffff00',
+          'yellow-dark': '#ffd700',
+          green: '#00ff00',
+          'green-dark': '#32cd32',
+          gray: {
+            100: '#f5f5f5',
+            200: '#e5e5e5',
+            300: '#d4d4d4',
+            400: '#a3a3a3',
+            500: '#737373',
+            600: '#525252',
+            700: '#404040',
+            800: '#262626',
+            900: '#171717',
+            950: '#0a0a0a'
+          }
         }
       },
       fontFamily: {
@@ -141,6 +160,16 @@ export default {
           from: { transform: 'scale(0.95)', opacity: '0' },
           to: { transform: 'scale(1)', opacity: '1' },
         },
+        'glow': {
+          '0%, 100%': { 
+            boxShadow: '0 0 20px rgba(255, 255, 0, 0.3)',
+            transform: 'scale(1)'
+          },
+          '50%': { 
+            boxShadow: '0 0 30px rgba(255, 255, 0, 0.5)',
+            transform: 'scale(1.05)'
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -150,6 +179,7 @@ export default {
         'slide-in-from-left': 'slide-in-from-left 0.3s ease-out',
         'slide-in-from-right': 'slide-in-from-right 0.3s ease-out',
         'scale-in': 'scale-in 0.2s ease-out',
+        'glow': 'glow 2s ease-in-out infinite',
       },
       typography: {
         DEFAULT: {
@@ -164,6 +194,9 @@ export default {
       boxShadow: {
         'inner-lg': 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
         'inner-xl': 'inset 0 4px 6px -1px rgb(0 0 0 / 0.1), inset 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+        'modern': '0 10px 25px rgba(255, 255, 0, 0.1)',
+        'modern-lg': '0 20px 40px rgba(255, 255, 0, 0.15)',
+        'modern-xl': '0 25px 50px rgba(255, 255, 0, 0.2)',
       },
       transitionProperty: {
         'height': 'height',

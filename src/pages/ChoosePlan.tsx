@@ -25,7 +25,7 @@ const ChoosePlan: React.FC = () => {
       ],
       icon: <Zap className="h-6 w-6" />,
       popular: false,
-      color: 'from-gray-500 to-gray-600'
+      color: 'from-gray-400 to-gray-500'
     },
     {
       id: 'two-days',
@@ -42,7 +42,7 @@ const ChoosePlan: React.FC = () => {
       ],
       icon: <Clock className="h-6 w-6" />,
       popular: false,
-      color: 'from-blue-500 to-blue-600'
+      color: 'from-yellow-400 to-yellow-500'
     },
     {
       id: 'monthly',
@@ -60,7 +60,7 @@ const ChoosePlan: React.FC = () => {
       ],
       icon: <Star className="h-6 w-6" />,
       popular: true,
-      color: 'from-purple-500 to-purple-600'
+      color: 'from-green-400 to-green-500'
     },
     {
       id: 'annual',
@@ -79,7 +79,7 @@ const ChoosePlan: React.FC = () => {
       ],
       icon: <Crown className="h-6 w-6" />,
       popular: false,
-      color: 'from-yellow-500 to-yellow-600'
+      color: 'from-yellow-400 to-yellow-600'
     }
   ];
 
@@ -90,7 +90,7 @@ const ChoosePlan: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 w-full">
+    <div className="min-h-screen bg-black w-full">
       <AppHeader onShowLicenseModal={() => {}} />
       
       <div className="w-full px-4 py-8">
@@ -108,12 +108,12 @@ const ChoosePlan: React.FC = () => {
           {plans.map((plan) => (
             <Card 
               key={plan.id}
-              className={`relative bg-slate-800/50 border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 hover:scale-105 ${
-                plan.popular ? 'ring-2 ring-purple-500/50' : ''
+              className={`relative bg-black/80 border border-gray-800 hover:border-gray-700 transition-all duration-300 hover:scale-105 backdrop-blur-sm ${
+                plan.popular ? 'ring-2 ring-green-500/50' : ''
               }`}
             >
               {plan.popular && (
-                <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white">
+                <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-500 text-black">
                   Most Popular
                 </Badge>
               )}
@@ -134,7 +134,7 @@ const ChoosePlan: React.FC = () => {
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((feature, index) => (
                     <li key={index} className="flex items-center text-sm text-gray-300">
-                      <Check className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+                      <Check className="h-4 w-4 text-green-400 mr-2 flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
@@ -142,7 +142,7 @@ const ChoosePlan: React.FC = () => {
                 
                 <Button 
                   onClick={() => handlePlanSelect(plan.id)}
-                  className={`w-full bg-gradient-to-r ${plan.color} hover:opacity-90 text-white font-semibold`}
+                  className={`w-full bg-gradient-to-r ${plan.color} hover:opacity-90 text-black font-semibold`}
                 >
                   {plan.id === 'free-trial' ? 'Start Free Trial' : 'Choose Plan'}
                 </Button>
@@ -156,7 +156,7 @@ const ChoosePlan: React.FC = () => {
             All plans include our core suspension analysis engine and setup recommendations.
           </p>
           <p className="text-sm text-gray-500">
-            Need help choosing? <button className="text-blue-400 hover:text-blue-300 underline">Contact our team</button>
+            Need help choosing? <button className="text-yellow-400 hover:text-yellow-300 underline">Contact our team</button>
           </p>
         </div>
       </div>

@@ -13,7 +13,7 @@ const SetupChoice: React.FC = () => {
       id: 'quick-setup',
       title: 'Quick Setup',
       description: 'Get basic suspension recommendations in minutes',
-      icon: <Zap className="h-8 w-8 text-blue-500" />,
+      icon: <Zap className="h-8 w-8 text-yellow-400" />,
       features: [
         'Basic suspension analysis',
         'Quick recommendations',
@@ -21,13 +21,13 @@ const SetupChoice: React.FC = () => {
         'Perfect for beginners'
       ],
       buttonText: 'Start Quick Setup',
-      color: 'from-blue-500 to-blue-600'
+      color: 'from-yellow-400 to-yellow-500'
     },
     {
       id: 'comprehensive-setup',
       title: 'Comprehensive Setup',
       description: 'Full suspension analysis with detailed recommendations',
-      icon: <Settings className="h-8 w-8 text-purple-500" />,
+      icon: <Settings className="h-8 w-8 text-green-400" />,
       features: [
         'Complete suspension analysis',
         'Detailed recommendations',
@@ -36,13 +36,13 @@ const SetupChoice: React.FC = () => {
         'Professional-grade insights'
       ],
       buttonText: 'Start Comprehensive Setup',
-      color: 'from-purple-500 to-purple-600'
+      color: 'from-green-400 to-green-500'
     },
     {
       id: 'advanced-tuning',
       title: 'Advanced Tuning',
       description: 'Expert-level setup optimization for experienced racers',
-      icon: <TrendingUp className="h-8 w-8 text-green-500" />,
+      icon: <TrendingUp className="h-8 w-8 text-blue-400" />,
       features: [
         'Advanced tuning algorithms',
         'Fine-tuned recommendations',
@@ -51,7 +51,7 @@ const SetupChoice: React.FC = () => {
         'Setup history tracking'
       ],
       buttonText: 'Start Advanced Tuning',
-      color: 'from-green-500 to-green-600'
+      color: 'from-blue-400 to-blue-500'
     }
   ];
 
@@ -60,14 +60,14 @@ const SetupChoice: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 w-full">
+    <div className="min-h-screen bg-black w-full">
       <AppHeader onShowLicenseModal={() => {}} />
       
       <div className="w-full px-4 py-20">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl">
-              <Car className="h-8 w-8 text-white" />
+            <div className="p-3 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl">
+              <Car className="h-8 w-8 text-black" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white">
               Choose Your Setup Type
@@ -83,7 +83,7 @@ const SetupChoice: React.FC = () => {
           {setupOptions.map((option) => (
             <Card 
               key={option.id}
-              className="bg-slate-800/50 border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 hover:scale-105 cursor-pointer"
+              className="bg-black/80 border border-gray-800 hover:border-gray-700 transition-all duration-300 hover:scale-105 cursor-pointer backdrop-blur-sm"
               onClick={() => handleSetupChoice(option.id)}
             >
               <CardHeader className="text-center pb-6">
@@ -98,14 +98,14 @@ const SetupChoice: React.FC = () => {
                 <ul className="space-y-3 mb-8">
                   {option.features.map((feature, index) => (
                     <li key={index} className="flex items-center text-sm text-gray-300">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-3 flex-shrink-0" />
+                      <div className="w-2 h-2 bg-yellow-400 rounded-full mr-3 flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
                 </ul>
                 
                 <Button 
-                  className={`w-full bg-gradient-to-r ${option.color} hover:opacity-90 text-white font-semibold`}
+                  className={`w-full bg-gradient-to-r ${option.color} hover:opacity-90 text-black font-semibold`}
                   onClick={() => handleSetupChoice(option.id)}
                 >
                   {option.buttonText}
@@ -121,7 +121,7 @@ const SetupChoice: React.FC = () => {
           </p>
           <Button 
             variant="outline"
-            className="border-gray-600 text-gray-300 hover:bg-gray-700/50"
+            className="border-gray-600 bg-transparent text-gray-300 hover:bg-gray-800/50 hover:border-gray-500"
             onClick={() => navigate('/choose-plan')}
           >
             ← Back to Plans

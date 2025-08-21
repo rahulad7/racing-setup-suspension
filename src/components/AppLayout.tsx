@@ -134,10 +134,10 @@ const AppLayout: React.FC = () => {
   const canUseFree = useMemo(() => canUseFreeAdvice(), [canUseFreeAdvice]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 w-full">
+    <div className="min-h-screen bg-black w-full">
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -right-20 w-40 h-40 md:-top-40 md:-right-40 md:w-80 md:h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-20 -left-20 w-40 h-40 md:-bottom-40 md:-left-40 md:w-80 md:h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}} />
+        <div className="absolute top-20 right-20 w-64 h-64 bg-yellow-400/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-64 h-64 bg-green-400/5 rounded-full blur-3xl" />
       </div>
 
       <AppHeader onShowLicenseModal={handleShowLicenseModal} />
@@ -151,11 +151,11 @@ const AppLayout: React.FC = () => {
               className="h-24 md:h-36 object-contain"
             />
           </div>
-          <p className="text-lg md:text-xl text-slate-400 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
+          <p className="text-lg md:text-xl text-gray-400 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
             Professional suspension analysis - powered by advanced algorithms
           </p>
           {user && (
-            <p className="text-sm text-slate-500 px-4">
+            <p className="text-sm text-gray-500 px-4">
               Welcome back, {user.email}! Your vehicles and setups are automatically saved.
             </p>
           )}
@@ -178,18 +178,18 @@ const AppLayout: React.FC = () => {
             }
           }, [])}
           <div className="flex justify-center mb-6 md:mb-8 w-full">
-            <TabsList className="grid grid-cols-3 bg-slate-800/50 border border-slate-700/50 backdrop-blur-sm p-1 rounded-xl w-full max-w-md md:max-w-lg">
-              <TabsTrigger value="vehicles" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-blue-700 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 rounded-lg text-xs md:text-sm">
+            <TabsList className="grid grid-cols-3 bg-black/80 border border-gray-800 backdrop-blur-sm p-1 rounded-xl w-full max-w-md md:max-w-lg">
+              <TabsTrigger value="vehicles" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-yellow-500 data-[state=active]:text-black data-[state=active]:shadow-modern transition-all duration-200 rounded-lg text-xs md:text-sm">
                 <Car className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
                 <span className="hidden sm:inline">Garage</span>
                 <span className="sm:hidden">Garage</span>
               </TabsTrigger>
-              <TabsTrigger value="setup" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-blue-700 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 rounded-lg text-xs md:text-sm">
+              <TabsTrigger value="setup" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-yellow-500 data-[state=active]:text-black data-[state=active]:shadow-modern transition-all duration-200 rounded-lg text-xs md:text-sm">
                 <Settings className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
                 <span className="hidden sm:inline">Setup</span>
                 <span className="sm:hidden">Setup</span>
               </TabsTrigger>
-              <TabsTrigger value="troubleshooting" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-blue-700 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 rounded-lg text-xs md:text-sm">
+              <TabsTrigger value="troubleshooting" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-yellow-500 data-[state=active]:text-black data-[state=active]:shadow-modern transition-all duration-200 rounded-lg text-xs md:text-sm">
                 <Wrench className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
                 <span className="hidden sm:inline">Troubleshooting</span>
                 <span className="sm:hidden">Issues</span>
