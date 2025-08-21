@@ -63,7 +63,17 @@
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
   }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
@@ -96,6 +106,14 @@
       linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.06) 75%), 
       linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.06) 75%);
     opacity: 0.6;
+  }
+  
+  #root {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
 }
 
@@ -196,6 +214,54 @@
 .racing-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(220, 38, 38, 0.15);
+}
+
+/* Full-width utilities */
+@layer utilities {
+  .w-full-viewport {
+    width: 100vw;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .h-full-viewport {
+    height: 100vh;
+    min-height: 100vh;
+  }
+  
+  .full-viewport {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  .no-margin {
+    margin: 0 !important;
+  }
+  
+  .no-padding {
+    padding: 0 !important;
+  }
+  
+  .no-spacing {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .w-full-responsive {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .h-full-responsive {
+    height: 100%;
+    min-height: 100vh;
+  }
 }
 
 /* Responsive utilities */

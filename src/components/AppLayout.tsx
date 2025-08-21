@@ -134,7 +134,7 @@ const AppLayout: React.FC = () => {
   const canUseFree = useMemo(() => canUseFreeAdvice(), [canUseFreeAdvice]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 w-full">
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -right-20 w-40 h-40 md:-top-40 md:-right-40 md:w-80 md:h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute -bottom-20 -left-20 w-40 h-40 md:-bottom-40 md:-left-40 md:w-80 md:h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}} />
@@ -142,8 +142,8 @@ const AppLayout: React.FC = () => {
 
       <AppHeader onShowLicenseModal={handleShowLicenseModal} />
 
-      <main className="container mx-auto px-4 py-6 md:py-8 relative z-10">
-        <div className="text-center mb-8 md:mb-12">
+      <main className="w-full px-4 py-6 md:py-8 relative z-10">
+        <div className="text-center mb-8 md:mb-12 w-full">
           <div className="mb-12 md:mb-16 flex justify-center">
             <img 
               src="https://d64gsuwffb70l.cloudfront.net/6878478b83c3f8bb4fdcd0d1_1753210534580_31753e04.png"
@@ -177,7 +177,7 @@ const AppLayout: React.FC = () => {
               setActiveTab(tabParam);
             }
           }, [])}
-          <div className="flex justify-center mb-6 md:mb-8">
+          <div className="flex justify-center mb-6 md:mb-8 w-full">
             <TabsList className="grid grid-cols-3 bg-slate-800/50 border border-slate-700/50 backdrop-blur-sm p-1 rounded-xl w-full max-w-md md:max-w-lg">
               <TabsTrigger value="vehicles" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-blue-700 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-200 rounded-lg text-xs md:text-sm">
                 <Car className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
@@ -200,7 +200,7 @@ const AppLayout: React.FC = () => {
           {/* Current Vehicle and Setup Display */}
           <CurrentVehicleSetupDisplay />
 
-          <TabsContent value="vehicles" className="mt-6 md:mt-8">
+          <TabsContent value="vehicles" className="mt-6 md:mt-8 w-full">
             <VehicleGarageList 
               onCreateSetup={handleCreateSetup}
               onLoadSetup={handleLoadSetup}
@@ -208,7 +208,7 @@ const AppLayout: React.FC = () => {
             />
           </TabsContent>
 
-          <TabsContent value="setup" className="mt-6 md:mt-8">
+          <TabsContent value="setup" className="mt-6 md:mt-8 w-full">
             {canAccess ? (
               freeTrialUsed && !isLicenseValid ? (
                 <FreeTrialBlock 
@@ -229,7 +229,7 @@ const AppLayout: React.FC = () => {
            </TabsContent>
 
 
-           <TabsContent value="troubleshooting" className="mt-6 md:mt-8">
+           <TabsContent value="troubleshooting" className="mt-6 md:mt-8 w-full">
             {canAccess ? (
               freeTrialUsed && !isLicenseValid ? (
                 <FreeTrialBlock 

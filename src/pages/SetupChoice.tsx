@@ -1,86 +1,131 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Plus, FolderOpen, ArrowLeft } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Car, Settings, TrendingUp, Zap } from 'lucide-react';
 import AppHeader from '@/components/AppHeader';
+import { useNavigate } from 'react-router-dom';
 
 const SetupChoice: React.FC = () => {
   const navigate = useNavigate();
 
+  const setupOptions = [
+    {
+      id: 'quick-setup',
+      title: 'Quick Setup',
+      description: 'Get basic suspension recommendations in minutes',
+      icon: <Zap className="h-8 w-8 text-blue-500" />,
+      features: [
+        'Basic suspension analysis',
+        'Quick recommendations',
+        'Essential setup data',
+        'Perfect for beginners'
+      ],
+      buttonText: 'Start Quick Setup',
+      color: 'from-blue-500 to-blue-600'
+    },
+    {
+      id: 'comprehensive-setup',
+      title: 'Comprehensive Setup',
+      description: 'Full suspension analysis with detailed recommendations',
+      icon: <Settings className="h-8 w-8 text-purple-500" />,
+      features: [
+        'Complete suspension analysis',
+        'Detailed recommendations',
+        'Track-specific tuning',
+        'Setup comparison tools',
+        'Professional-grade insights'
+      ],
+      buttonText: 'Start Comprehensive Setup',
+      color: 'from-purple-500 to-purple-600'
+    },
+    {
+      id: 'advanced-tuning',
+      title: 'Advanced Tuning',
+      description: 'Expert-level setup optimization for experienced racers',
+      icon: <TrendingUp className="h-8 w-8 text-green-500" />,
+      features: [
+        'Advanced tuning algorithms',
+        'Fine-tuned recommendations',
+        'Performance optimization',
+        'Data-driven insights',
+        'Setup history tracking'
+      ],
+      buttonText: 'Start Advanced Tuning',
+      color: 'from-green-500 to-green-600'
+    }
+  ];
+
+  const handleSetupChoice = (setupType: string) => {
+    navigate(`/data-entry?setup=${setupType}`);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 w-full">
       <AppHeader onShowLicenseModal={() => {}} />
       
-      <div className="container mx-auto px-4 py-20">
-        <div className="max-w-4xl mx-auto">
-          {/* Back button */}
-          <Button
-            variant="ghost"
-            className="text-white hover:text-blue-400 mb-8"
-            onClick={() => navigate('/')}
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Home
-          </Button>
-
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Choose Setup Type
+      <div className="w-full px-4 py-20">
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl">
+              <Car className="h-8 w-8 text-white" />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-white">
+              Choose Your Setup Type
             </h1>
-            <p className="text-xl text-slate-300">
-              Start a new setup or load a previously saved one
-            </p>
           </div>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            Select the level of analysis that best fits your needs and experience level.
+            You can always upgrade to a more comprehensive analysis later.
+          </p>
+        </div>
 
-          {/* Choice cards */}
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-200 cursor-pointer"
-                  onClick={() => navigate('/data-entry')}>
-              <CardHeader className="text-center pb-4">
-                <div className="bg-blue-500/20 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto">
-                  <Plus className="h-8 w-8 text-blue-400" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {setupOptions.map((option) => (
+            <Card 
+              key={option.id}
+              className="bg-slate-800/50 border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 hover:scale-105 cursor-pointer"
+              onClick={() => handleSetupChoice(option.id)}
+            >
+              <CardHeader className="text-center pb-6">
+                <div className="flex justify-center mb-4">
+                  {option.icon}
                 </div>
-                <CardTitle className="text-2xl text-white">New Setup</CardTitle>
-                <CardDescription className="text-slate-400 text-lg">
-                  Create a fresh vehicle setup from scratch
-                </CardDescription>
+                <CardTitle className="text-2xl text-white mb-3">{option.title}</CardTitle>
+                <p className="text-gray-400">{option.description}</p>
               </CardHeader>
-              <CardContent className="text-center">
+              
+              <CardContent>
+                <ul className="space-y-3 mb-8">
+                  {option.features.map((feature, index) => (
+                    <li key={index} className="flex items-center text-sm text-gray-300">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-3 flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                
                 <Button 
-                  size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3"
-                  onClick={() => navigate('/data-entry')}
+                  className={`w-full bg-gradient-to-r ${option.color} hover:opacity-90 text-white font-semibold`}
+                  onClick={() => handleSetupChoice(option.id)}
                 >
-                  Start New Setup
+                  {option.buttonText}
                 </Button>
               </CardContent>
             </Card>
+          ))}
+        </div>
 
-            <Card className="bg-slate-800/50 border-slate-700 hover:bg-slate-800/70 transition-all duration-200 cursor-pointer"
-                  onClick={() => navigate('/saved-setups')}>
-              <CardHeader className="text-center pb-4">
-                <div className="bg-green-500/20 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto">
-                  <FolderOpen className="h-8 w-8 text-green-400" />
-                </div>
-                <CardTitle className="text-2xl text-white">Saved Setup</CardTitle>
-                <CardDescription className="text-slate-400 text-lg">
-                  Load and modify a previously saved setup
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="text-center">
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="border-green-600 text-green-400 hover:bg-green-600 hover:text-white px-8 py-3"
-                  onClick={() => navigate('/saved-setups')}
-                >
-                  View Saved Setups
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
+        <div className="text-center mt-16">
+          <p className="text-gray-400 mb-6">
+            Not sure which to choose? Start with Quick Setup and upgrade as needed.
+          </p>
+          <Button 
+            variant="outline"
+            className="border-gray-600 text-gray-300 hover:bg-gray-700/50"
+            onClick={() => navigate('/choose-plan')}
+          >
+            ← Back to Plans
+          </Button>
         </div>
       </div>
     </div>

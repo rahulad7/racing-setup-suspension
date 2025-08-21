@@ -1,197 +1,163 @@
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { useNavigate } from 'react-router-dom';
+import { Check, Star, Zap, Crown, Clock } from 'lucide-react';
 import AppHeader from '@/components/AppHeader';
-import MonthlyPayPalButton from '@/components/MonthlyPayPalButton';
-import AnnualPayPalButton from '@/components/AnnualPayPalButton';
-import { Check, X, Star, Zap, Trophy, Crown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const ChoosePlan: React.FC = () => {
   const navigate = useNavigate();
-
-  const handlePlanSelect = (planType: string) => {
-    if (planType === 'weekend-pass') {
-      // Redirect to PayPal for Weekend Pass
-      window.open('https://www.paypal.com/ncp/payment/59Q7EQQZNZ6NG', '_blank');
-    } else {
-      navigate('/license', { state: { selectedPlan: planType } });
-    }
-  };
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
 
   const plans = [
     {
+      id: 'free-trial',
       name: 'Free Trial',
       price: '$0',
-      period: '',
-      description: 'Perfect for trying out our platform',
-      icon: <Star className="w-8 h-8 text-blue-400" />,
+      duration: '1 Analysis',
+      description: 'Try our suspension analysis once for free',
       features: [
-        { name: '3 Setup Analyses', included: true },
-        { name: 'Basic Recommendations', included: true },
-        { name: 'Advanced Analytics', included: false },
-
-        { name: 'Priority Support', included: false }
+        'One complete suspension analysis',
+        'Basic setup recommendations',
+        'Vehicle-specific results',
+        '24-hour access'
       ],
-      buttonText: 'Start Free Trial',
-      buttonClass: 'bg-white text-gray-900 hover:bg-gray-100',
-      popular: false
+      icon: <Zap className="h-6 w-6" />,
+      popular: false,
+      color: 'from-gray-500 to-gray-600'
     },
     {
-      name: 'Weekend Pass',
+      id: 'two-days',
+      name: '2-Day Access',
       price: '$14.95',
-      period: '2 days',
-      description: 'Perfect for race weekends',
-      icon: <Zap className="w-8 h-8 text-green-400" />,
+      duration: '2 Days',
+      description: 'Perfect for weekend track days',
       features: [
-        { name: '6 Analyses', included: true },
-        { name: 'Advanced Recommendations', included: true },
-        { name: 'Advanced Analytics', included: false },
-
-        { name: 'Priority Support', included: false }
+        'Unlimited analyses for 2 days',
+        'Advanced setup recommendations',
+        'Track-specific tuning',
+        'Setup history tracking',
+        'Email support'
       ],
-      buttonText: 'Get Weekend Pass',
-      buttonClass: 'bg-green-600 hover:bg-green-700 text-white',
-      popular: false
+      icon: <Clock className="h-6 w-6" />,
+      popular: false,
+      color: 'from-blue-500 to-blue-600'
     },
     {
-      name: 'Monthly Pro',
+      id: 'monthly',
+      name: 'Monthly Plan',
       price: '$29.95',
-      period: '/month',
-      description: 'Great for regular racers',
-      icon: <Trophy className="w-8 h-8 text-blue-400" />,
+      duration: 'per month',
+      description: 'For regular track enthusiasts',
       features: [
-        { name: '20 Analyses', included: true },
-        { name: 'Advanced Recommendations', included: true },
-        { name: 'Advanced Analytics', included: true },
-
-        { name: 'Priority Support', included: true }
+        'Unlimited analyses',
+        'Premium setup recommendations',
+        'Advanced tuning algorithms',
+        'Setup comparison tools',
+        'Priority email support',
+        'Mobile app access'
       ],
-      buttonText: 'Subscribe Monthly',
-      buttonClass: 'bg-blue-600 hover:bg-blue-700 text-white',
-      popular: true
+      icon: <Star className="h-6 w-6" />,
+      popular: true,
+      color: 'from-purple-500 to-purple-600'
     },
     {
-      name: 'Annual Pro',
-      price: '$199.95',
-      period: '/year',
+      id: 'annual',
+      name: 'Annual Plan',
+      price: '$299.95',
+      duration: 'per year',
       description: 'Best value for serious racers',
-      icon: <Crown className="w-8 h-8 text-yellow-400" />,
-      savings: 'Save $100',
       features: [
-        { name: 'Unlimited Analyses', included: true },
-        { name: 'Advanced Recommendations', included: true },
-        { name: 'Advanced Analytics', included: true },
-
-        { name: 'Priority Support', included: true }
+        'Everything in Monthly Plan',
+        '2 months free',
+        'Exclusive racing insights',
+        'Advanced analytics',
+        'Phone support',
+        'Custom setup templates',
+        'Team collaboration tools'
       ],
-      buttonText: 'Subscribe Annually',
-      buttonClass: 'bg-yellow-600 hover:bg-yellow-700 text-white',
-      popular: false
+      icon: <Crown className="h-6 w-6" />,
+      popular: false,
+      color: 'from-yellow-500 to-yellow-600'
     }
   ];
 
+  const handlePlanSelect = (planId: string) => {
+    setSelectedPlan(planId);
+    // Navigate to payment or setup page
+    navigate(`/setup-choice?plan=${planId}`);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 w-full">
       <AppHeader onShowLicenseModal={() => {}} />
       
-      <div className="py-12">
-        <div className="container mx-auto px-4">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-5xl font-bold text-white mb-6">
-              Choose Your Plan
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Get the perfect setup analysis for your track/racing needs.
-            </p>
-          </div>
+      <div className="w-full px-4 py-8">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Choose Your Plan
+          </h1>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            From weekend warriors to professional racers, we have the perfect plan for your needs.
+            Start with a free trial and upgrade when you're ready.
+          </p>
+        </div>
 
-          {/* Pricing Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {plans.map((plan, index) => (
-              <Card 
-                key={index}
-                className={`relative bg-white/10 backdrop-blur-sm border-gray-700 text-white transition-all duration-300 hover:scale-105 ${
-                  plan.popular ? 'ring-2 ring-blue-500 scale-105' : ''
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <Badge className="bg-blue-500 text-white px-4 py-1 text-sm font-medium">
-                      Most Popular
-                    </Badge>
-                  </div>
-                )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {plans.map((plan) => (
+            <Card 
+              key={plan.id}
+              className={`relative bg-slate-800/50 border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 hover:scale-105 ${
+                plan.popular ? 'ring-2 ring-purple-500/50' : ''
+              }`}
+            >
+              {plan.popular && (
+                <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white">
+                  Most Popular
+                </Badge>
+              )}
+              
+              <CardHeader className="text-center pb-4">
+                <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${plan.color} flex items-center justify-center mx-auto mb-4`}>
+                  {plan.icon}
+                </div>
+                <CardTitle className="text-xl text-white">{plan.name}</CardTitle>
+                <div className="text-center">
+                  <span className="text-3xl font-bold text-white">{plan.price}</span>
+                  <span className="text-gray-400 ml-2">{plan.duration}</span>
+                </div>
+                <p className="text-gray-400 text-sm mt-2">{plan.description}</p>
+              </CardHeader>
+              
+              <CardContent>
+                <ul className="space-y-3 mb-6">
+                  {plan.features.map((feature, index) => (
+                    <li key={index} className="flex items-center text-sm text-gray-300">
+                      <Check className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
                 
-                <CardHeader className="text-center pb-4">
-                  <div className="flex justify-center mb-4">
-                    {plan.icon}
-                  </div>
-                  <CardTitle className="text-2xl font-bold text-white mb-2">
-                    {plan.name}
-                  </CardTitle>
-                  <div className="mb-2">
-                    <span className="text-4xl font-bold text-blue-400">{plan.price}</span>
-                    {plan.period && <span className="text-gray-300 ml-1">{plan.period}</span>}
-                  </div>
-                  {plan.savings && (
-                    <Badge variant="secondary" className="bg-green-600 text-white">
-                      {plan.savings}
-                    </Badge>
-                  )}
-                  <p className="text-gray-300 text-sm mt-2">
-                    {plan.description}
-                  </p>
-                </CardHeader>
+                <Button 
+                  onClick={() => handlePlanSelect(plan.id)}
+                  className={`w-full bg-gradient-to-r ${plan.color} hover:opacity-90 text-white font-semibold`}
+                >
+                  {plan.id === 'free-trial' ? 'Start Free Trial' : 'Choose Plan'}
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
 
-                <CardContent className="pt-0">
-                  <ul className="space-y-3 mb-8">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm">
-                        {feature.included ? (
-                          <Check className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" />
-                        ) : (
-                          <X className="w-4 h-4 text-gray-500 mr-3 flex-shrink-0" />
-                        )}
-                        <span className={feature.included ? 'text-white' : 'text-gray-500'}>
-                          {feature.name}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  {plan.name === 'Monthly Pro' ? (
-                    <MonthlyPayPalButton onSuccess={(subscriptionId) => {
-                      alert(`Monthly subscription created: ${subscriptionId}`);
-                    }} />
-                  ) : plan.name === 'Annual Pro' ? (
-                    <AnnualPayPalButton onSuccess={(subscriptionId) => {
-                      alert(`Annual subscription created: ${subscriptionId}`);
-                    }} />
-                  ) : (
-                    <Button
-                      onClick={() => handlePlanSelect(plan.name.toLowerCase().replace(' ', '-'))}
-                      className={`w-full font-semibold ${plan.buttonClass}`}
-                    >
-                      {plan.buttonText}
-                    </Button>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* Additional Info */}
-          <div className="text-center mt-16">
-            <p className="text-gray-400 mb-4">
-              All plans include comprehensive setup recommendations and analysis
-            </p>
-            <p className="text-sm text-gray-500">
-              Cancel anytime • Secure payment processing
-            </p>
-          </div>
+        <div className="text-center mt-12">
+          <p className="text-gray-400 mb-4">
+            All plans include our core suspension analysis engine and setup recommendations.
+          </p>
+          <p className="text-sm text-gray-500">
+            Need help choosing? <button className="text-blue-400 hover:text-blue-300 underline">Contact our team</button>
+          </p>
         </div>
       </div>
     </div>

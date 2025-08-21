@@ -76,7 +76,7 @@ const ModernAppLayout: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 w-full">
       {/* Animated background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -right-20 w-40 h-40 md:-top-40 md:-right-40 md:w-80 md:h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
@@ -85,9 +85,9 @@ const ModernAppLayout: React.FC = () => {
 
       <AppHeader onShowLicenseModal={() => setShowLicenseModal(true)} />
 
-      <main className="container mx-auto px-4 py-6 md:py-8 relative z-10">
+      <main className="w-full px-4 py-6 md:py-8 relative z-10">
         {/* Hero Section */}
-        <div className="text-center mb-8 md:mb-12">
+        <div className="text-center mb-8 md:mb-12 w-full">
           <div className="flex items-center justify-center gap-2 md:gap-3 mb-4">
             <div className="p-2 md:p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl">
               <Zap className="h-6 w-6 md:h-8 md:w-8 text-white" />
@@ -102,7 +102,7 @@ const ModernAppLayout: React.FC = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-          <div className="flex justify-center mb-6 md:mb-8">
+          <div className="flex justify-center mb-6 md:mb-8 w-full">
             <TabsList className="grid grid-cols-5 bg-slate-800/50 border border-slate-700/50 backdrop-blur-sm p-1 rounded-xl w-full max-w-4xl overflow-x-auto">
               <TabsTrigger 
                 value="vehicles" 
@@ -147,7 +147,7 @@ const ModernAppLayout: React.FC = () => {
             </TabsList>
           </div>
 
-          <TabsContent value="vehicles" className="mt-6 md:mt-8">
+          <TabsContent value="vehicles" className="mt-6 md:mt-8 w-full">
             <VehicleManager
               vehicles={vehicles}
               onVehiclesChange={setVehicles}
@@ -156,7 +156,7 @@ const ModernAppLayout: React.FC = () => {
             />
           </TabsContent>
 
-          <TabsContent value="setup" className="mt-6 md:mt-8">
+          <TabsContent value="setup" className="mt-6 md:mt-8 w-full">
             {canAccessApp() ? (
               freeTrialUsed && !isLicenseValid ? (
                 <FreeTrialBlock 
@@ -171,7 +171,7 @@ const ModernAppLayout: React.FC = () => {
                     vehicleName={vehicles.find(v => v.id === selectedVehicle)?.name || 'Vehicle'}
                   />
                 ) : (
-                  <ModernCard className="text-center py-12 md:py-16" gradient glow>
+                  <ModernCard className="text-center py-12 md:py-16 w-full" gradient glow>
                     <div className="flex flex-col items-center gap-4">
                       <div className="p-3 md:p-4 bg-slate-700/50 rounded-full">
                         <Car className="h-6 w-6 md:h-8 md:w-8 text-slate-400" />
@@ -190,18 +190,18 @@ const ModernAppLayout: React.FC = () => {
             )}
           </TabsContent>
 
-          <TabsContent value="issues" className="mt-6 md:mt-8">
+          <TabsContent value="issues" className="mt-6 md:mt-8 w-full">
             <HandlingIssuesForm 
               data={issuesData}
               onChange={handleIssueChange}
             />
           </TabsContent>
 
-          <TabsContent value="results" className="mt-6 md:mt-8">
+          <TabsContent value="results" className="mt-6 md:mt-8 w-full">
             {analysisData ? (
               <DiagnosticResults data={analysisData} />
             ) : (
-              <ModernCard className="text-center py-12 md:py-16" gradient glow>
+              <ModernCard className="text-center py-12 md:py-16 w-full" gradient glow>
                 <div className="flex flex-col items-center gap-4">
                   <div className="p-3 md:p-4 bg-slate-700/50 rounded-full">
                     <TrendingUp className="h-6 w-6 md:h-8 md:w-8 text-slate-400" />
@@ -212,7 +212,7 @@ const ModernAppLayout: React.FC = () => {
             )}
           </TabsContent>
 
-          <TabsContent value="history" className="mt-6 md:mt-8">
+          <TabsContent value="history" className="mt-6 md:mt-8 w-full">
             {canAccessApp() ? (
               selectedVehicle ? (
                 <VehicleSetupForm 
@@ -221,7 +221,7 @@ const ModernAppLayout: React.FC = () => {
                   activeSection="history"
                 />
               ) : (
-                <ModernCard className="text-center py-12 md:py-16" gradient glow>
+                <ModernCard className="text-center py-12 md:py-16 w-full" gradient glow>
                   <div className="flex flex-col items-center gap-4">
                     <div className="p-3 md:p-4 bg-slate-700/50 rounded-full">
                       <History className="h-6 w-6 md:h-8 md:w-8 text-slate-400" />

@@ -57,10 +57,10 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
 
   return (
     <>
-      <header className="bg-gray-900/80 backdrop-blur-sm border-b border-gray-700 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
+      <header className="bg-gray-900/80 backdrop-blur-sm border-b border-gray-700 sticky top-0 z-50 w-full">
+        <div className="w-full px-4 py-4">
           {/* Desktop Header */}
-          <div className="hidden md:flex items-center justify-between">
+          <div className="hidden md:flex items-center justify-between w-full">
             <div className="flex items-center space-x-4">
               <Logo />
             </div>
@@ -118,7 +118,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
           </div>
 
           {/* Mobile Header */}
-          <div className="md:hidden flex items-center justify-between">
+          <div className="md:hidden flex items-center justify-between w-full">
             <Logo />
             
             <div className="flex items-center space-x-2">
@@ -134,11 +134,11 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 border-t border-gray-700">
-              <div className="flex flex-col space-y-3 pt-4">
+            <div className="md:hidden mt-4 pb-4 border-t border-gray-700 w-full">
+              <div className="flex flex-col space-y-3 pt-4 w-full">
                 <Button 
                   variant="ghost" 
-                  className="text-white hover:text-blue-400 justify-start"
+                  className="text-white hover:text-blue-400 justify-start w-full"
                   onClick={() => handleNavigation('/')}
                 >
                   Home
@@ -146,14 +146,14 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
                 
                 <Button 
                   variant="ghost" 
-                  className="text-white hover:text-blue-400 justify-start"
+                  className="text-white hover:text-blue-400 justify-start w-full"
                   onClick={() => handleNavigation('/sample-demo')}
                 >
                   Sample
                 </Button>
                 
                 <Button 
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold justify-start"
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold justify-start w-full"
                   onClick={handleLaunchAnalysis}
                 >
                   Launch Online Analysis Tool
@@ -161,7 +161,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
                 
                 <Button 
                   variant="outline"
-                  className="border-blue-600 bg-white text-blue-700 hover:bg-blue-50 hover:text-blue-800 font-semibold justify-start"
+                  className="border-blue-600 bg-white text-blue-700 hover:bg-blue-50 hover:text-black font-semibold justify-start w-full"
                   onClick={handleChoosePlan}
                 >
                   Choose Your Plan
@@ -169,7 +169,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
                 
                 <Button 
                   variant="ghost"
-                  className="text-white hover:text-blue-400 justify-start"
+                  className="text-white hover:text-blue-400 justify-start w-full"
                   onClick={() => setShowContactModal(true)}
                 >
                   Contact Us
@@ -177,7 +177,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
                 
                 <Button 
                   variant="outline"
-                  className="text-black bg-white border-gray-300 hover:bg-gray-100 hover:text-black font-medium justify-start"
+                  className="text-black bg-white border-gray-300 hover:bg-gray-100 hover:text-black font-medium justify-start w-full"
                   onClick={handleAuthClick}
                 >
                   {user ? 'Sign Out' : 'Sign In'}
@@ -187,7 +187,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ onShowLicenseModal }) => {
           )}
           
           {/* User Status Display */}
-          <div className="mt-4">
+          <div className="mt-4 w-full">
             <UserStatusDisplay />
           </div>
         </div>

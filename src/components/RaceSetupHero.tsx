@@ -6,7 +6,7 @@ import { Car, Zap, Target, TrendingUp } from 'lucide-react';
 const RaceSetupHero: React.FC = () => {
   const navigate = useNavigate();
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden w-full">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -right-20 w-40 h-40 md:-top-40 md:-right-40 md:w-80 md:h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
@@ -14,9 +14,9 @@ const RaceSetupHero: React.FC = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 md:w-96 md:h-96 bg-green-500/5 rounded-full blur-3xl animate-pulse" style={{animationDelay: '4s'}} />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-8 md:py-20">
+      <div className="relative z-10 w-full px-4 py-8 md:py-20">
         {/* Main hero content */}
-        <div className="text-center max-w-4xl mx-auto">
+        <div className="text-center w-full max-w-4xl mx-auto">
           {/* Logo */}
           <div className="mb-8 md:mb-12 flex justify-center">
             <img 
@@ -68,8 +68,8 @@ const RaceSetupHero: React.FC = () => {
           </div>
 
           {/* Feature highlights */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 max-w-4xl mx-auto px-4">
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 md:p-6 hover:bg-slate-800/70 transition-all duration-200">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 max-w-4xl mx-auto px-4 w-full">
+            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 md:p-6 hover:bg-slate-800/70 transition-all duration-200 w-full">
               <div className="bg-blue-500/20 rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center mb-3 md:mb-4 mx-auto">
                 <Car className="h-5 w-5 md:h-6 md:w-6 text-blue-400" />
               </div>
@@ -77,7 +77,7 @@ const RaceSetupHero: React.FC = () => {
               <p className="text-sm md:text-base text-slate-400">Developed by racers with real world experience for authentic racing insights</p>
             </div>
 
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 md:p-6 hover:bg-slate-800/70 transition-all duration-200">
+            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 md:p-6 hover:bg-slate-800/70 transition-all duration-200 w-full">
               <div className="bg-purple-500/20 rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center mb-3 md:mb-4 mx-auto">
                 <Zap className="h-5 w-5 md:h-6 md:w-6 text-purple-400" />
               </div>
@@ -85,7 +85,7 @@ const RaceSetupHero: React.FC = () => {
               <p className="text-sm md:text-base text-slate-400">More than 25 data points, specific to your car</p>
             </div>
 
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 md:p-6 hover:bg-slate-800/70 transition-all duration-200 sm:col-span-2 lg:col-span-1">
+            <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-4 md:p-6 hover:bg-slate-800/70 transition-all duration-200 sm:col-span-2 lg:col-span-1 w-full">
               <div className="bg-green-500/20 rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center mb-3 md:mb-4 mx-auto">
                 <TrendingUp className="h-5 w-5 md:h-6 md:w-6 text-green-400" />
               </div>
